@@ -29,10 +29,13 @@ async def make_order(callback: types.CallbackQuery):
 @menu_router.message(F.text.lower() == "пицца 30 см")
 async def show_pizzas(message: types.Message):
     kb = types.ReplyKeyboardRemove()
+    # DB request
     await message.answer("Вот пиццы, которые мы предлагаем", reply_markup=kb)
 
 
 @menu_router.message(F.text.lower() == "закуски")
 async def show_snacks(message: types.Message):
     kb = types.ReplyKeyboardRemove()
+    # DB request
+    # all_dishes = db.get_all_dishes()
     await message.answer("Вот закуски, которые мы предлагаем", reply_markup=kb)
