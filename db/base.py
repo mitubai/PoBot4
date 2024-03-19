@@ -35,6 +35,16 @@ class Database:
             )
             """
         )
+        self.cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS survey (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                age INTEGER,
+                phone_number TEXT
+            )
+            """
+        )
         self.db.commit()
 
     def populate_tables(self):
@@ -89,6 +99,16 @@ class Database:
         )
         return self.cursor.fetchall()
 
+    def insert_survey(self, data: dict):
+        self.cursor.execute(
+            """
+            INSERT INTO survey (name, age, phone_number)
+                VALUES (:name, :age, :phone_number)
+            """,
+            data,
+        )
+        self.db.commit()
+
 
 if __name__ == "__main__":
     db = Database()
@@ -102,6 +122,9 @@ if __name__ == "__main__":
     # pprint(db.get_cheap_dishes())
     # pprint(db.get_dishes_by_category(3))
     pprint(db.get_dishes_by_cat_name("Закуски"))
+
+
+
 
 
 

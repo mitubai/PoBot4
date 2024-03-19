@@ -3,6 +3,7 @@ from aiogram.filters import Command
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from pprint import pprint
+from bot import db
 
 # FSM - Finite State Machine
 # конечный автомат
@@ -49,5 +50,7 @@ async def process_phone_number(message: types.Message, state: FSMContext):
     data = await state.get_data()
     pprint(data)
     # save to Data Base
+    db.insert_survey(data)
+    # чистим стейт
     await state.clear()
     await message.answer("Спасибо за пройденный опрос!")
