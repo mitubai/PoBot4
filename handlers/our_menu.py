@@ -1,3 +1,4 @@
+from bot import db
 from aiogram import Router, F, types
 
 
@@ -37,5 +38,7 @@ async def show_pizzas(message: types.Message):
 async def show_snacks(message: types.Message):
     kb = types.ReplyKeyboardRemove()
     # DB request
-    # all_dishes = db.get_all_dishes()
+    dishes = db.get_dishes_by_cat_name("Закуски")
     await message.answer("Вот закуски, которые мы предлагаем", reply_markup=kb)
+    for dish in dishes:
+        await message.answer(f"Название{dish[1]}\n, Описание: {dish[2]}\n, Цена: {dish[3]}")
