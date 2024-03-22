@@ -18,7 +18,8 @@ class Database:
             """
             CREATE TABLE IF NOT EXISTS dish_categories (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT
+                name TEXT,
+                introduction_text TEXT
             )
             """
         )
@@ -50,12 +51,12 @@ class Database:
     def populate_tables(self):
         self.cursor.execute(
             """
-            INSERT INTO dish_categories (name)
-                VALUES  ('Пицца 30 см'),
-                        ('Пицца 40 см'),
-                        ('Закуски'), 
-                        ('Салаты'), 
-                        ('Супы')
+            INSERT INTO dish_categories (name, introduction_text)
+                VALUES  ('Пицца 30 см', 'Вот самые популярные пиццы'),
+                        ('Пицца 40 см', 'Вот самые популярные пиццы 40 см'),
+                        ('Закуски', 'Вот самые популярные закуски'), 
+                        ('Салаты', 'Вот самые популярные салаты'), 
+                        ('Супы', 'Вот самые популярные супы')
             """
         )
         self.cursor.execute(
@@ -66,6 +67,13 @@ class Database:
             """
         )
         self.db.commit()
+
+    def get_category_by_name(self, name: str):
+        self.cursor.execute(
+            "SELECT * FROM dish_categories WHERE name = :catName",
+            {"catName": name},
+        )
+        return self.cursor.fetchone()
 
     def get_all_dishes(self):
         self.cursor.execute("SELECT * FROM dishes")
