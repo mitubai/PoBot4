@@ -1,1 +1,1 @@
-passgit
+pass
