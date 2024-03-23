@@ -15,7 +15,7 @@ class MashinaKgCrawler:
     def get_page_title(self):
         selector = Selector(self.response.text)
         title = selector.css("title::text").get()
-        # print(title)
+        # print(title),
 
     def get_car_links(self):
         selector = Selector(self.response.text)

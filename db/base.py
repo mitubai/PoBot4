@@ -4,6 +4,7 @@ from pprint import pprint
 
 
 class Database:
+
     def __init__(self) -> None:
         db_path = Path(__file__).parent.parent / "database.sqlite"
         self.db = sqlite3.connect(db_path)
@@ -62,8 +63,15 @@ class Database:
         self.cursor.execute(
             """
             INSERT INTO dishes (name, description, price, picture, category_id)  
-                VALUES ('Ассорти СЕТ', 'Колбаски: говяжья и куриная, полукопченная, капуста квашеная, картофель фри, сочные куриные крылышки, чесночные гренки, сырный соус, горчица,кетчуп. АССОРТИ СЕТ Уй этинен жана тоок этинен, жарым- жартылай ышталган колбасалар, туздалып ачытылган капуста, карт?шк? фри, ширел?? тоок канаттары, сарымсактуу куурулган нандар, сыр чыгы, горчица, кетчуп.', 1498, 'assorti1.png', 3),
-                ('Атлантика', 'Атлантическая слабосолёная сельдь, отварной картофель, лук, зелень. АТЛАНТИКА Азыраак туздалган Атлантика сельди, сууга бышкан карт?шк?, пияз, ч?п- чарлар. Atlantic slightly salted herring, boiled potatoes, onions, herbs.', 318, 'atlantika.png', 3)
+                VALUES ('Пицца маргарита', 'Самый вкусный среди всех', 1699, 'pizza.jpg', 1),
+               ('Пицца пеперони сырная', 'Пеперонни 40 см но с более сырной начинкой', 3400, 'pizza40.jpg', 2),
+               ('Пицца пеперони классическая', 'Классическая пеперонни 40 см', 2900, '2pizza40.jpg', 2),
+               ('Шоколадный труфель', 'Внутри тающий шоколад', 1700, 'dessert.jpg', 3),
+               ('Шоколадные пряники', 'Очень хорошо подойдут с чаем', 700, '2dessert.png', 3),
+               ('Классический овощной салад', 'Для тех кто на диете', 800, '1salad.jpg', 4),
+               ('Фруктовый салад', 'Для любителей сладкого', 900, '2salad.jpg', 4),
+               ('Шорпо', 'Классический-кыргызский суп', 1050, 'soap.jpg', 5),
+               ('Том Ям', 'Острый-корейский суп, для любителей морепродуктов и острого', 1000, '2soap.jpg', 5)
             """
         )
         self.db.commit()
@@ -120,24 +128,6 @@ class Database:
 
 if __name__ == "__main__":
     db = Database()
-    db.drop_tables()
+    #db.drop_tables()
     db.create_tables()
-    db.populate_tables()
-    # pprint(db.get_all_dishes())
-    # for dish in db.get_all_dishes():
-    #     print("Название: ", dish[1]," Описание: ", dish[2])
-    # pprint(db.get_one_dish(2))
-    # pprint(db.get_cheap_dishes())
-    # pprint(db.get_dishes_by_category(3))
-    pprint(db.get_dishes_by_cat_name("Закуски"))
-
-
-
-
-
-
-# СУБД SQLite
-# СУБД - система управления базами данных
-        # Sqlite, Postgres, MySql,       
-
-# python301/database.sqlite
+    #db.populate_tables()

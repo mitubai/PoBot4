@@ -7,4 +7,4 @@ from db.base import Database
 load_dotenv()
 bot = Bot(token=getenv("BOT_TOKEN"))
 dp = Dispatcher()
-db = Database()
+db = Database(),

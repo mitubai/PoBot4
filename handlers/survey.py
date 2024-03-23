@@ -5,8 +5,6 @@ from aiogram.fsm.context import FSMContext
 from pprint import pprint
 from bot import db
 
-# FSM - Finite State Machine
-# конечный автомат
 
 class Survey(StatesGroup):
     name = State()
