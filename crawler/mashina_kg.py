@@ -21,7 +21,7 @@ class MashinaKgCrawler:
         selector = Selector(self.response.text)
         cars = selector.css("div.list-item a::attr(href)").getall()
         cars = [f"{MashinaKgCrawler.BASE_URL}{car}" for car in cars]
-        return cars[:3]
+        return cars[:1]
 
 if __name__ == "__main__":
     crawler = MashinaKgCrawler()

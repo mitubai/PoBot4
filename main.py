@@ -11,9 +11,7 @@ from handlers.survey import survey_router
 
 
 async def on_startup(bot: Bot):
-    db.drop_tables()
-    db.create_tables()
-    db.populate_tables()
+    pass
 
 
 async def main():
