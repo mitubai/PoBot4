@@ -2,7 +2,7 @@ from aiogram import Router, F, types
 from aiogram.filters import Command
 import logging
 
-from keyboards.all_keyboards import start_kb
+from keyboards.keyboards import start_kb
 
 
 start_router = Router()
